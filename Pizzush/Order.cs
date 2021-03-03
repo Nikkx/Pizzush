@@ -7,20 +7,34 @@ namespace Pizzush
     class Order
     {
         int orderNum;
-        List<IFood> foodItems;
+        List<List<IFood>> foodItems;
 
-        public Order(int orderNem, List<IFood> foods)
+        public Order(int orderNum, List<IFood> orderedItems)
         {
-            this.orderNum = orderNem;
-            this.foodItems = foods;
+            foreach (List<IFood> list in orderedItems)
+            {
+                list.Reverse();
+                // IPizza BasicPizza = new Mozzarella(new TomatoSauce(new PlainPizza()));
+                IFood BasicFood;
+                foreach(IFood item in list)
+                {
+
+                }
+            }
+            this.orderNum = orderNum;
+           // this.foodItems = foods;
         }
 
+        /// <summary>
+        /// Prepare the order
+        /// </summary>
+        /// <returns>time takes to prepare</returns>
         public int Prepare()
         {
             int time = 0;
-            for (int i = 0; i < this.foodItems.Count; i++)
+            for (int i = 0; i < foodItems.Count; i++)
             {
-                time += this.foodItems[i].GetPrepareTime();
+              //  time += foodItems[i][j].GetPrepareTime();
             }
             return time;
         }

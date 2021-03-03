@@ -12,17 +12,18 @@ namespace Pizzush
 
         public OrderTaker()
         {
-            this.menu = new Menu();
-            this.counter = 0;
-            this.ui = new CmdOrderUI();
+            menu = new Menu();
+            counter = 0;
+            ui = new CmdOrderUI();
         }
 
         public Order NewOrder()
         {
-            List<int> orderedItemsIds = this.ui.DrawMenu(menu);
-            List<IFood> orderedItems = idToFoodItem(orderedItemsIds);
-            Order order = new Order(this.counter, orderedItems);
-            this.counter++;
+            List<int> orderedItemsIds = this.ui.DrawMenu(menu); //list of IFood?
+            //list of lists that represents the order - each inner list is a pizza with toppings
+            List<IFood> orderedItems = IdToFoodItem(orderedItemsIds);
+            Order order = new Order(counter, orderedItems);
+            counter++;
             int cost = CalculateCost(orderedItems);
             ui.DrawPayment(cost);
 
@@ -30,18 +31,18 @@ namespace Pizzush
 
         }
 
-        private List<IFood> idToFoodItem(List<int> ids)
+        private List<IFood> IdToFoodItem(List<int> ids)
         {
             List<IFood> foodItems = new List<IFood>();
             for (int i = 0; i < ids.Count; i++)
             {
-                for (int j = 0; j < this.menu.getMenu().Count; j++)
-                {
-                    if (ids[i] == this.menu.getMenu()[j].GetID())
-                    {
-                        foodItems.Add(menu.getMenu()[j]);
-                    }
-                }
+                //for (int j = 0; j < this.menu.GetMenu().Count; j++)
+                //{
+                //    if (ids[i] == this.menu.GetMenu()[j].GetID())
+                //    {
+                //        foodItems.Add(menu.GetMenu()[j]);
+                //    }
+                //}
             }
             return foodItems;
         }
@@ -49,7 +50,7 @@ namespace Pizzush
         private int CalculateCost(List<IFood> orderedItems)
         {
             int cost = 0;
-            for(int i = 0; i < orderedItems.Count; i++)
+            for (int i = 0; i < orderedItems.Count; i++)
             {
                 cost += orderedItems[i].GetCost();
             }
