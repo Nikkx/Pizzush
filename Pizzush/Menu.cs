@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Reflection;
 
 namespace Pizzush
 {
     public class Menu
     {
-        List<IFood> menu = new List<IFood>();
+        List<IFood> PizzaMenu = new List<IFood>();
 
         public Menu()
         {
@@ -18,22 +19,26 @@ namespace Pizzush
             //this.menu.Add(bianca);
             //this.menu.Add(olive);
 
-            ///READDDDDDDDDDDDDDDDDDDDDD!!!
-            ///so we can do it like you did here, just with stupid decorator, and add those to the enum, or maybe we shoyld use id? IDK ANYMOREEEE
             IPizza Margarita = new Mozzarella(new TomatoSauce(new RegularCrustPizza()));
             IPizza Margot = new Mozzarella(new TomatoSauce(new ThinCrustPizza()));
 
+            string name = Margarita.GetType().Name;
+            //todo if this doesnt work - create tuple (3) dictionary {id,name,IFood}
+
+            //todo add pizzas to menu maybe find a smarter way?
+
         }
 
-        public PizzaMenuEnum[] GetMenu()
+        public List<IFood> GetMenu()
         {
-            // return this.menu;
+             return PizzaMenu;
             //Enum.GetValues(typeof(SomeEnum)).Cast<SomeEnum>();
-             return (PizzaMenuEnum[])Enum.GetValues(typeof(PizzaMenuEnum));
+            //return (PizzaMenuEnum[])Enum.GetValues(typeof(PizzaMenuEnum));
             //return Enum.GetNames(typeof(PizzaMenuEnum));
             //return PizzaMenuEnum;
         }
 
+        //maybe not needed
         private List<IFood> ConvertEnumToFood()
         {
             List<IFood> foodList = new List<IFood>();
@@ -48,22 +53,23 @@ namespace Pizzush
             return foodList;
         }
 
+        //
         public enum PizzaMenuEnum
         {
-            //crusts
-            RegularCrustPizza,
-            //toppings
-            Mozzarella,
-            TomatoSauce,
+            ////crusts
+            //RegularCrustPizza,
+            ////toppings
+            //Mozzarella,
+            //TomatoSauce,
+
+            Margarita,
+            Margot
         }
 
-        //public static class PizzaMenuEnum
+        //public static class PizzaMenu
         //{
-        //    //crusts
-        //    public const int RegularCrustPizza = 0;
-        //    //toppings
-        //    public const int Mozzarella = 1;
-        //    public const int TomatoSauce = 2;
+        //    public static IPizza Margarita = new Mozzarella(new TomatoSauce(new RegularCrustPizza()));
+        //    public static IPizza Margot = new Mozzarella(new TomatoSauce(new ThinCrustPizza()));
 
         //}
     }

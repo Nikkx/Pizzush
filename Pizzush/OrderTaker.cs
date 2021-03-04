@@ -19,8 +19,7 @@ namespace Pizzush
 
         public Order NewOrder()
         {
-            List<int> orderedItemsIds = this.ui.DrawMenu(menu); //list of IFood?
-            //list of lists that represents the order - each inner list is a pizza with toppings
+            List<int> orderedItemsIds = ui.DrawMenu(menu); 
             List<IFood> orderedItems = IdToFoodItem(orderedItemsIds);
             Order order = new Order(counter, orderedItems);
             counter++;
@@ -31,7 +30,12 @@ namespace Pizzush
 
         }
 
-        private List<IFood> IdToFoodItem(List<int> ids)
+        /// <summary>
+        /// get list of food ids and return list of IFood 
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        private List<IFood> IdToFoodItem(List<int> ids)//todo
         {
             List<IFood> foodItems = new List<IFood>();
             for (int i = 0; i < ids.Count; i++)

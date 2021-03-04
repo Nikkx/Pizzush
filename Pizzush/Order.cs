@@ -11,6 +11,7 @@ namespace Pizzush
 
         public Order(int orderNum, List<IFood> orderedItems)
         {
+            //todo create order
             foreach (List<IFood> list in orderedItems)
             {
                 list.Reverse();
@@ -34,7 +35,7 @@ namespace Pizzush
             int time = 0;
             for (int i = 0; i < foodItems.Count; i++)
             {
-              //  time += foodItems[i][j].GetPrepareTime();
+              //todo  time += foodItems[i].GetPrepareTime();
             }
             return time;
         }

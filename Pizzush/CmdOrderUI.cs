@@ -13,30 +13,24 @@ namespace Pizzush
             Console.WriteLine("Welcome to Pizzush!");
             Console.WriteLine("Please type the number of the dish you would like to order, shown in []");
             Console.WriteLine("Please press enter after each number");
-            //Console.WriteLine("When finished, please type end");
-            
-            //Print menu
-            Console.WriteLine("Choose your crust:");
-            foreach(PizzaMenuEnum item in menu.GetMenu())
-            {
-                //crusts
-                if (item.ToString().Contains("Crust"))
-                {
-                    Console.Write($"[{(int)item}] {item}\t");
-                }
-                Console.WriteLine("\n");
-            }
+            Console.WriteLine("When finished, please type end");
 
-            Console.WriteLine("Choose toppings, type \"end\" when finished.");
-            foreach (PizzaMenuEnum item in menu.GetMenu())
-            {
-                //not crusts -> toppings.
-                if (!item.ToString().Contains("Crust"))
-                {
-                    Console.Write($"[{(int)item}] {item}\t");
-                }
-                Console.WriteLine("\n");
-            }
+            //Print menu
+            //foreach (PizzaMenuEnum item in menu.GetMenu()) //TODO
+            //{
+            //    Console.WriteLine($"[{(int)item}] {item}");
+            //}
+
+            //Console.WriteLine("Choose toppings, type \"end\" when finished.");
+            //foreach (PizzaMenuEnum item in menu.GetMenu())
+            //{
+            //    //not crusts -> toppings.
+            //    if (!item.ToString().Contains("Crust"))
+            //    {
+            //        Console.Write($"[{(int)item}] {item}\t");
+            //    }
+            //    Console.WriteLine("\n");
+            //}
 
             //for (int i = 0; i < menu.GetMenu().Length; i++)
             //{
@@ -46,29 +40,29 @@ namespace Pizzush
             //}
 
             //Get order from user
-            List<int> orderedItems = new List<int>(); //how to create order from list?? or even from user input?
+            List<int> orderedItems = new List<int>();
 
-            //while (true)
-            //{
-            //    var userInput = Console.ReadLine();
-            //    if (userInput == "end")
-            //    {
-            //        break;
-            //    }
-            //    bool isNumeric = int.TryParse(userInput, out int n);
-            //    if (!isNumeric)
-            //    {
-            //        Console.WriteLine("please enter a number or 'end' only");
-            //        continue;
-            //    }
-            //    int id = int.Parse(userInput);
-            //    if (!isValidID(menu, id))
-            //    {
-            //        Console.WriteLine("Please enter an number of item from the mune or 'end'");
-            //        continue;
-            //    }
-            //    orderedItems.Add(id);
-            //}
+            while (true)
+            {
+                var userInput = Console.ReadLine();
+                if (userInput == "end")
+                {
+                    break;
+                }
+                bool isNumeric = int.TryParse(userInput, out int n);
+                if (!isNumeric)
+                {
+                    Console.WriteLine("please enter a number or 'end' only");
+                    continue;
+                }
+                int id = int.Parse(userInput);
+                //if (!isValidID(menu, id)) //TODO validate user input
+                //{
+                //    Console.WriteLine("Please enter an number of item from the mune or 'end'");
+                //    continue;
+                //}
+                orderedItems.Add(id);
+            }
             return orderedItems;
         }
 
