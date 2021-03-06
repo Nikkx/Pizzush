@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Pizzush
 {
@@ -7,11 +8,11 @@ namespace Pizzush
     {
         static void Main(string[] args)
         {
-            Menu m = new Menu();
+            //Menu m = new Menu();
 
-            OrderTaker take = new OrderTaker();
+            //OrderTaker take = new OrderTaker();
 
-            Order o = take.NewOrder();
+            //Order o = take.NewOrder();
 
             //Order o1 = take.NewOrder();
 
@@ -21,6 +22,7 @@ namespace Pizzush
 
 
             IPizza BasicPizza = new Mozzarella(new TomatoSauce(new RegularCrustPizza()));
+
             Console.WriteLine("Pizza with: " + BasicPizza.GetDescription() + " :)");
             Console.WriteLine("Cost: " + BasicPizza.GetCost() +" nis.");
             Console.WriteLine("Prepare time: " + BasicPizza.GetPrepareTime() + " minutes.");

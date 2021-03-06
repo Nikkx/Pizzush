@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
+using Pizzush.Toppings;
 
 namespace Pizzush
 {
@@ -21,6 +22,9 @@ namespace Pizzush
 
             IPizza Margarita = new Mozzarella(new TomatoSauce(new RegularCrustPizza()));
             IPizza Margot = new Mozzarella(new TomatoSauce(new ThinCrustPizza()));
+            IPizza Bianca = new Mozzarella(new CreamAndTruffleSauce(new ThinCrustPizza()));
+            IPizza Pepperoni = new Pepperoni(new Mozzarella(new TomatoSauce(new RegularCrustPizza())));
+            IPizza Fungi = new Mushrooms(new Mozzarella(new CreamAndTruffleSauce(new ThinCrustPizza())));
 
             string name = Margarita.GetType().Name;
             //todo if this doesnt work - create tuple (3) dictionary {id,name,IFood}
