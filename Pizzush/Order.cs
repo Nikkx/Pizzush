@@ -5,7 +5,7 @@ using Pizzush.Interfaces;
 
 namespace Pizzush
 {
-    class Order
+    public class Order
     {
         int orderNum; // to identify the order 
         List<MenuItem> foodItems;
@@ -26,5 +26,16 @@ namespace Pizzush
             }
             return time;
         }
+
+        public int GetOrderNumber()
+        {
+            return this.orderNum;
+        }
+
+        public List<MenuItem> GetFoodItems()
+        {
+            return this.foodItems;
+        }
+
     }
 }

@@ -8,8 +8,11 @@ namespace Pizzush
     {
         static void Main(string[] args)
         {
-            OrderTaker main = new OrderTaker();
-            main.NewOrder();
+            while (true)
+            {
+                OrderTaker main = new OrderTaker();
+                main.NewOrder();
+            }
         }
     }
 }
