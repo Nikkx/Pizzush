@@ -12,9 +12,9 @@ namespace Pizzush
     {
         // to identify the order 
         int orderNum;
-        List<MenuItem> foodItems;
+        List<IFood> foodItems;
 
-        public Order(int orderNum, List<MenuItem> orderedItems)
+        public Order(int orderNum, List<IFood> orderedItems)
         {
             this.foodItems = orderedItems;
             this.orderNum = orderNum;
@@ -27,9 +27,9 @@ namespace Pizzush
         public int Prepare()
         {
             int time = 0;
-            foreach (MenuItem item in this.foodItems)
+            foreach (IFood item in this.foodItems)
             {
-              time += item.GetPrepTime();
+              time += item.GetPrepareTime();
             }
             return time;
         }
@@ -47,7 +47,7 @@ namespace Pizzush
         /// Get Food Items list
         /// </summary>
         /// <returns></returns>
-        public List<MenuItem> GetFoodItems()
+        public List<IFood> GetFoodItems()
         {
             return foodItems;
         }

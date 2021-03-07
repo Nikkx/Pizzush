@@ -16,20 +16,21 @@ namespace Pizzush
         /// </summary>
         /// <param name="menu"></param>
         /// <returns></returns>
-        public List<MenuItem> DrawMenu(Menu menu)
+        public List<IFood> DrawMenu(Menu menu)
         {
             Console.WriteLine("Welcome to Pizzush!");
-            Console.WriteLine("Please type the name of the dish you would like to order");
+            Console.WriteLine("Please type the number of the dish you would like to order");
             Console.WriteLine("Please press enter after each name");
             Console.WriteLine("When finished, please type end");
 
             //Print menu
-            foreach (MenuItem item in menu.GetMenu()) 
+            for (int i = 0; i < menu.GetMenu().Count; i++) 
             {
-                Console.WriteLine(item.GetName() + " - " + item.GetPrice()); 
+                IFood item = menu.GetMenu()[i];
+                Console.WriteLine(i + ". " + item.GetDescription() + " - " + item.GetCost()); 
             }
 
-            List<MenuItem> orderedItems = new List<MenuItem>();
+            List<IFood> orderedItems = new List<IFood>();
 
             // Get order from user
             while (true)
@@ -39,7 +40,19 @@ namespace Pizzush
                 {
                     break;
                 }
-                MenuItem orderedItem = menu.ConvertNameToIFood(userInput);
+                bool isNumeric = int.TryParse(userInput, out int n);
+                if (!isNumeric)
+                {
+                    Console.WriteLine("please enter a number or 'end' only");
+                    continue;
+                }
+                int id = int.Parse(userInput);
+                if (id >= menu.GetMenu().Count)
+                {
+                    Console.WriteLine("Please enter an number of item from the mune or 'end'");
+                    continue;
+                }
+                IFood orderedItem = menu.ConvertIdToIFood(id);
                 
                 if(orderedItem == null)
                 {

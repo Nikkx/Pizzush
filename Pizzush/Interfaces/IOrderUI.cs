@@ -17,7 +17,7 @@ namespace Pizzush
         /// </summary>
         /// <param name="menu"></param>
         /// <returns></returns>
-        public List<MenuItem> DrawMenu(Menu menu);
+        public List<IFood> DrawMenu(Menu menu);
 
         /// <summary>
         /// Will draw the amount to pay

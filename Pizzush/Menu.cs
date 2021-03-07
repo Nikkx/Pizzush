@@ -12,7 +12,7 @@ namespace Pizzush
         /// <summary>
         /// List that holds all menu items
         /// </summary>
-        List<MenuItem> menu = new List<MenuItem>();
+        List<IFood> menu = new List<IFood>();
 
         /// <summary>
         /// restaurant menu class
@@ -25,34 +25,21 @@ namespace Pizzush
             IPizza Pepperoni = new Pepperoni(new Mozzarella(new TomatoSauce(new RegularCrustPizza())));
             IPizza Fungi = new Mushrooms(new Mozzarella(new CreamAndTruffleSauce(new ThinCrustPizza())));
 
-            MenuItem margarita = new MenuItem(Margarita, Margarita.GetCost(), "Margarita", 10);
-            MenuItem margot = new MenuItem(Margot, 60, "Margot", 15);
-            MenuItem bianca = new MenuItem(Bianca, 60, "Bianca", 15);
-            MenuItem pepperoni = new MenuItem(Pepperoni, 65, "Pepperoni", 15);
-            MenuItem fungi = new MenuItem(Fungi, 65, "Fungi", 15);
-
-            menu.Add(margarita);
-            menu.Add(margot);
-            menu.Add(bianca);
-            menu.Add(pepperoni);
-            menu.Add(fungi);
+            menu.Add(Margarita);
+            menu.Add(Margot);
+            menu.Add(Bianca);
+            menu.Add(Pepperoni);
+            menu.Add(Fungi);
         }
 
-        public List<MenuItem> GetMenu()
+        public List<IFood> GetMenu()
         {
             return menu;
         }
 
-        public MenuItem ConvertNameToIFood(string name)
+        public IFood ConvertIdToIFood(int id)
         {
-            foreach (MenuItem item in menu)
-            {
-                if (item.GetName() == name)
-                {
-                    return item;
-                }
-            }
-            return null;
+            return menu[id];
         }
     }
 }

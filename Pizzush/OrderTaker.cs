@@ -11,7 +11,7 @@ namespace Pizzush
     class OrderTaker
     {
         Menu menu;
-        int counter;
+        int counter = 0;
         IOrderUI ui;
         Kitchen kitchen;
 
@@ -21,7 +21,7 @@ namespace Pizzush
         public OrderTaker()
         {
             menu = new Menu(); // To print to the customer
-            counter = 0; // To identify each order
+            
             ui = new CmdOrderUI(); // To support different kinds of UI
             kitchen = new Kitchen(); // To Papare the food
         }
@@ -32,7 +32,7 @@ namespace Pizzush
         public void NewOrder()
         {
             // Print menu to the user and get his order
-            List<MenuItem> orderedItems = ui.DrawMenu(menu); 
+            List<IFood> orderedItems = ui.DrawMenu(menu); 
             // create a new order object
             Order order = new Order(counter, orderedItems);
             // Count the orders of the day to identify them
@@ -49,12 +49,12 @@ namespace Pizzush
         /// </summary>
         /// <param name="orderedItems"></param>
         /// <returns></returns>
-        private int CalculateCost(List<MenuItem> orderedItems)
+        private int CalculateCost(List<IFood> orderedItems)
         {
             int cost = 0;
-            foreach (MenuItem item in orderedItems)
+            foreach (IFood item in orderedItems)
             {
-                cost += item.GetPrice();
+                cost += item.GetCost();
             }
             return cost;
         }

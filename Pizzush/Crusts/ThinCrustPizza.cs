@@ -15,7 +15,6 @@ namespace Pizzush
         public ThinCrustPizza()
         {
             description = $"Thin Crust Pizza ({cost})";
-            Console.WriteLine("Making dough...");
         }
         public int GetCost()
         {
