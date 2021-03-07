@@ -3,78 +3,50 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 using Pizzush.Toppings;
+using Pizzush.Interfaces;
 
 namespace Pizzush
 {
     public class Menu
     {
-        List<IFood> PizzaMenu = new List<IFood>();
+        List<MenuItem> menu = new List<MenuItem>();
 
         public Menu()
         {
-            //IFood margarita = new IFood(1, "margarita", "simple pizza margarita", 50, 5);
-            //IFood bianca = new IFood(2, "bianca", "simple pizza margarita", 50, 5);
-            //IFood olive = new IFood(3, "olive", "simple pizza margarita with olives", 60, 10);
-
-            //this.menu.Add(margarita);
-            //this.menu.Add(bianca);
-            //this.menu.Add(olive);
-
             IPizza Margarita = new Mozzarella(new TomatoSauce(new RegularCrustPizza()));
             IPizza Margot = new Mozzarella(new TomatoSauce(new ThinCrustPizza()));
             IPizza Bianca = new Mozzarella(new CreamAndTruffleSauce(new ThinCrustPizza()));
             IPizza Pepperoni = new Pepperoni(new Mozzarella(new TomatoSauce(new RegularCrustPizza())));
             IPizza Fungi = new Mushrooms(new Mozzarella(new CreamAndTruffleSauce(new ThinCrustPizza())));
 
-            string name = Margarita.GetType().Name;
-            //todo if this doesnt work - create tuple (3) dictionary {id,name,IFood}
+            MenuItem margarita = new MenuItem(Margarita, 55, "Margarita", 10);
+            MenuItem margot = new MenuItem(Margot, 60, "Margot", 15);
+            MenuItem bianca = new MenuItem(Bianca, 60, "Bianca", 15);
+            MenuItem pepperoni = new MenuItem(Pepperoni, 65, "Pepperoni", 15);
+            MenuItem fungi = new MenuItem(Fungi, 65, "Fungi", 15);
 
-            //todo add pizzas to menu maybe find a smarter way?
-
+            menu.Add(margarita);
+            menu.Add(margot);
+            menu.Add(bianca);
+            menu.Add(pepperoni);
+            menu.Add(fungi);
         }
 
-        public List<IFood> GetMenu()
+        public List<MenuItem> GetMenu()
         {
-             return PizzaMenu;
-            //Enum.GetValues(typeof(SomeEnum)).Cast<SomeEnum>();
-            //return (PizzaMenuEnum[])Enum.GetValues(typeof(PizzaMenuEnum));
-            //return Enum.GetNames(typeof(PizzaMenuEnum));
-            //return PizzaMenuEnum;
+            return menu;
         }
 
-        //maybe not needed
-        private List<IFood> ConvertEnumToFood()
+        public MenuItem ConvertNameToIFood(string name)
         {
-            List<IFood> foodList = new List<IFood>();
-            //get all items on menu
-            PizzaMenuEnum[] menu = (PizzaMenuEnum[])Enum.GetValues(typeof(PizzaMenuEnum));
-            foreach(PizzaMenuEnum item in menu)
+            foreach (MenuItem item in menu)
             {
-                Type t = Type.GetType(item.ToString());
-                IFood food = (IFood)Activator.CreateInstance(t);
-                foodList.Add( food);
+                if (item.GetName() == name)
+                {
+                    return item;
+                }
             }
-            return foodList;
+            return null;
         }
-
-        //
-        public enum PizzaMenuEnum
-        {
-            ////crusts
-            //RegularCrustPizza,
-            ////toppings
-            //Mozzarella,
-            //TomatoSauce,
-
-            Margarita,
-            Margot
-        }
-
-        //public static class PizzaMenu
-        //{
-        //    public static IPizza Margarita = new Mozzarella(new TomatoSauce(new RegularCrustPizza()));
-        //    public static IPizza Margot = new Mozzarella(new TomatoSauce(new ThinCrustPizza()));
-
-        //}
     }
 }

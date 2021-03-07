@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Pizzush.Interfaces;
 
 namespace Pizzush
 {
@@ -12,51 +13,32 @@ namespace Pizzush
 
         public OrderTaker()
         {
-            menu = new Menu();
-            counter = 0;
-            ui = new CmdOrderUI();
+            menu = new Menu(); // To print to the customer
+            counter = 0; // To identify each order
+            ui = new CmdOrderUI(); // To support different kinds of UI
         }
 
         public Order NewOrder()
         {
-            List<int> orderedItemsIds = ui.DrawMenu(menu); 
-            List<IFood> orderedItems = IdToFoodItem(orderedItemsIds);
+            // Print menu to the user and get his order
+            List<MenuItem> orderedItems = ui.DrawMenu(menu); 
+            // create a new order object
             Order order = new Order(counter, orderedItems);
+            // Count the orders of the day to identify them
             counter++;
+            // Calculate the cost the present to the user
             int cost = CalculateCost(orderedItems);
             ui.DrawPayment(cost);
 
             return order;
-
         }
 
-        /// <summary>
-        /// get list of food ids and return list of IFood 
-        /// </summary>
-        /// <param name="ids"></param>
-        /// <returns></returns>
-        private List<IFood> IdToFoodItem(List<int> ids)//todo
-        {
-            List<IFood> foodItems = new List<IFood>();
-            for (int i = 0; i < ids.Count; i++)
-            {
-                //for (int j = 0; j < this.menu.GetMenu().Count; j++)
-                //{
-                //    if (ids[i] == this.menu.GetMenu()[j].GetID())
-                //    {
-                //        foodItems.Add(menu.GetMenu()[j]);
-                //    }
-                //}
-            }
-            return foodItems;
-        }
-
-        private int CalculateCost(List<IFood> orderedItems)
+        private int CalculateCost(List<MenuItem> orderedItems)
         {
             int cost = 0;
-            for (int i = 0; i < orderedItems.Count; i++)
+            foreach (MenuItem item in orderedItems)
             {
-                cost += orderedItems[i].GetCost();
+                cost += item.GetPrice();
             }
             return cost;
         }

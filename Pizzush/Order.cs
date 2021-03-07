@@ -1,41 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Pizzush.Interfaces;
 
 namespace Pizzush
 {
     class Order
     {
-        int orderNum;
-        List<List<IFood>> foodItems;
+        int orderNum; // to identify the order 
+        List<MenuItem> foodItems;
 
-        public Order(int orderNum, List<IFood> orderedItems)
+        public Order(int orderNum, List<MenuItem> orderedItems)
         {
-            //todo create order
-            foreach (List<IFood> list in orderedItems)
-            {
-                list.Reverse();
-                // IPizza BasicPizza = new Mozzarella(new TomatoSauce(new PlainPizza()));
-                IFood BasicFood;
-                foreach(IFood item in list)
-                {
-
-                }
-            }
+            this.foodItems = orderedItems;
             this.orderNum = orderNum;
-           // this.foodItems = foods;
         }
 
-        /// <summary>
-        /// Prepare the order
-        /// </summary>
-        /// <returns>time takes to prepare</returns>
+       // calculate the approximate time it will take to prapare the order
         public int Prepare()
         {
             int time = 0;
-            for (int i = 0; i < foodItems.Count; i++)
+            foreach (MenuItem item in this.foodItems)
             {
-              //todo  time += foodItems[i].GetPrepareTime();
+              time += item.GetPrepTime();
             }
             return time;
         }
