@@ -4,24 +4,44 @@ using System.Text;
 
 namespace Pizzush
 {
+    /// <summary>
+    /// Mozzarella topping
+    /// </summary>
     public class Mozzarella : ToppingDecorator
     {
-        public Mozzarella(IPizza pizza) : base(pizza) {
-            Console.WriteLine("Adding Mozzarella...");
+        /// <summary>
+        /// Ctor
+        /// </summary>
+        /// <param name="pizza"></param>
+        public Mozzarella(IPizza pizza) : base(pizza)
+        {
         }
-          public override int GetCost()
+
+        /// <summary>
+        /// Get Cost
+        /// </summary>
+        /// <returns></returns>
+        public override int GetCost()
         {
             return tempPizza.GetCost() + 5;
         }
 
-         public override string GetDescription()
+        /// <summary>
+        /// Get Description
+        /// </summary>
+        /// <returns></returns>
+        public override string GetDescription()
         {
             return tempPizza.GetDescription() + ", Mozzarella";
         }
 
-          public override int GetPrepareTime()
+        /// <summary>
+        /// Get preparetion time
+        /// </summary>
+        /// <returns></returns>
+        public override int GetPrepareTime()
         {
-            return tempPizza.GetPrepareTime() +1;
+            return tempPizza.GetPrepareTime() + 1;
         }
     }
 }

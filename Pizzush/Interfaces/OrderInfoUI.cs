@@ -6,7 +6,10 @@ using System.Text;
 using Pizzush.Interfaces;
 
 namespace Pizzush
-{
+{ 
+    /// <summary>
+    /// Order Info UI interface
+    /// </summary>
     class OrderInfoUI : IOrderInfoUI
     {
         List<int> inPrep;

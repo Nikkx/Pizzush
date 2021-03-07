@@ -6,9 +6,16 @@ using Pizzush.Interfaces;
 
 namespace Pizzush
 {
+    /// <summary>
+    /// CMD order UI
+    /// </summary>
     class CmdOrderUI : IOrderUI
     {
-        //draw menu and get order from user
+        /// <summary>
+        /// draw menu and get order from user
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <returns></returns>
         public List<MenuItem> DrawMenu(Menu menu)
         {
             Console.WriteLine("Welcome to Pizzush!");
@@ -46,7 +53,10 @@ namespace Pizzush
             return orderedItems;
         }
 
-        // Draw payment info 
+        /// <summary>
+        /// Draw payment info
+        /// </summary>
+        /// <param name="cost"></param>
         public void DrawPayment(int cost)
         {
             Console.WriteLine("Please pay " + cost + " " + IOrderUI.Currency);

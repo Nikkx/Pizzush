@@ -5,9 +5,13 @@ using Pizzush.Interfaces;
 
 namespace Pizzush
 {
+    /// <summary>
+    /// Order class
+    /// </summary>
     public class Order
     {
-        int orderNum; // to identify the order 
+        // to identify the order 
+        int orderNum;
         List<MenuItem> foodItems;
 
         public Order(int orderNum, List<MenuItem> orderedItems)
@@ -16,7 +20,10 @@ namespace Pizzush
             this.orderNum = orderNum;
         }
 
-       // calculate the approximate time it will take to prapare the order
+        /// <summary>
+        /// calculate the approximate time it will take to prapare the order
+        /// </summary>
+        /// <returns></returns>
         public int Prepare()
         {
             int time = 0;
@@ -27,14 +34,22 @@ namespace Pizzush
             return time;
         }
 
+        /// <summary>
+        /// Get Order Number
+        /// </summary>
+        /// <returns></returns>
         public int GetOrderNumber()
         {
-            return this.orderNum;
+            return orderNum;
         }
 
+        /// <summary>
+        /// Get Food Items list
+        /// </summary>
+        /// <returns></returns>
         public List<MenuItem> GetFoodItems()
         {
-            return this.foodItems;
+            return foodItems;
         }
 
     }

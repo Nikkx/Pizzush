@@ -5,6 +5,9 @@ using Pizzush.Interfaces;
 
 namespace Pizzush
 {
+    /// <summary>
+    /// Order Taker class
+    /// </summary>
     class OrderTaker
     {
         Menu menu;
@@ -12,6 +15,9 @@ namespace Pizzush
         IOrderUI ui;
         Kitchen kitchen;
 
+        /// <summary>
+        /// CTOR
+        /// </summary>
         public OrderTaker()
         {
             menu = new Menu(); // To print to the customer
@@ -20,6 +26,9 @@ namespace Pizzush
             kitchen = new Kitchen(); // To Papare the food
         }
 
+        /// <summary>
+        /// Create new order
+        /// </summary>
         public void NewOrder()
         {
             // Print menu to the user and get his order
@@ -35,6 +44,11 @@ namespace Pizzush
             ui.DrawPayment(cost);
         }
 
+        /// <summary>
+        /// Calsulate order cost
+        /// </summary>
+        /// <param name="orderedItems"></param>
+        /// <returns></returns>
         private int CalculateCost(List<MenuItem> orderedItems)
         {
             int cost = 0;
@@ -44,6 +58,5 @@ namespace Pizzush
             }
             return cost;
         }
-
     }
 }

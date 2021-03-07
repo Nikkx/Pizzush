@@ -6,11 +6,17 @@ using System.Threading;
 
 namespace Pizzush
 {
+    /// <summary>
+    /// Kitchen class
+    /// </summary>
     public class Kitchen
     {
         List<IOrderInfoUI> UIs;
         Queue<Order> orders;
 
+        /// <summary>
+        /// CTOR
+        /// </summary>
         public Kitchen()
         {
             UIs = new List<IOrderInfoUI>();

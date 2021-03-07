@@ -11,33 +11,31 @@ namespace Pizzush
     {
         protected IPizza tempPizza;
 
+        /// <summary>
+        /// CTOR
+        /// </summary>
+        /// <param name="pizza"></param>
         public ToppingDecorator(IPizza pizza)
         {
             tempPizza = pizza;
         }
 
+        /// <summary>
+        /// Get Cost
+        /// </summary>
+        /// <returns></returns>
         public abstract int GetCost();
 
+        /// <summary>
+        /// Get Description
+        /// </summary>
+        /// <returns></returns>
         public abstract string GetDescription();
 
+        /// <summary>
+        /// Get preparetion time
+        /// </summary>
+        /// <returns></returns>
         public abstract int GetPrepareTime();
-
-       // public abstract int GetID();
-
-
-        //public int GetCost()
-        //{
-        //    return tempPizza.GetCost();
-        //}
-
-        //public string GetDescription()
-        //{
-        //    return tempPizza.GetDescription();
-        //}
-
-        //public int GetPrepareTime()
-        //{
-        //    return tempPizza.GetPrepareTime();
-        //}
     }
 }

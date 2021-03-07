@@ -4,10 +4,13 @@ using System.Text;
 
 namespace Pizzush
 {
+    /// <summary>
+    /// Thin Crust
+    /// </summary>
     public class ThinCrustPizza : IPizza
     {
         string description;
-        private const int cost = 20;//make consts
+        private const int cost = 20;
 
         public ThinCrustPizza()
         {

@@ -9,8 +9,14 @@ namespace Pizzush
 {
     public class Menu
     {
+        /// <summary>
+        /// List that holds all menu items
+        /// </summary>
         List<MenuItem> menu = new List<MenuItem>();
 
+        /// <summary>
+        /// restaurant menu class
+        /// </summary>
         public Menu()
         {
             IPizza Margarita = new Mozzarella(new TomatoSauce(new RegularCrustPizza()));
@@ -19,7 +25,7 @@ namespace Pizzush
             IPizza Pepperoni = new Pepperoni(new Mozzarella(new TomatoSauce(new RegularCrustPizza())));
             IPizza Fungi = new Mushrooms(new Mozzarella(new CreamAndTruffleSauce(new ThinCrustPizza())));
 
-            MenuItem margarita = new MenuItem(Margarita, 55, "Margarita", 10);
+            MenuItem margarita = new MenuItem(Margarita, Margarita.GetCost(), "Margarita", 10);
             MenuItem margot = new MenuItem(Margot, 60, "Margot", 15);
             MenuItem bianca = new MenuItem(Bianca, 60, "Bianca", 15);
             MenuItem pepperoni = new MenuItem(Pepperoni, 65, "Pepperoni", 15);
