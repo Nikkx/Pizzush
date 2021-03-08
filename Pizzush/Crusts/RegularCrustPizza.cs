@@ -14,7 +14,7 @@ namespace Pizzush
 
         public RegularCrustPizza()
         {
-            Description = $"Regular Crust Pizza ({Cost})";
+            Description = $"Regular Crust Pizza";
         }
 
         //return cost in shekels

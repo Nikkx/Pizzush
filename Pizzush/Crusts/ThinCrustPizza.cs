@@ -9,21 +9,21 @@ namespace Pizzush
     /// </summary>
     public class ThinCrustPizza : IPizza
     {
-        string description;
-        private const int cost = 20;
+        string Description;
+        private const int Cost = 20;
 
         public ThinCrustPizza()
         {
-            description = $"Thin Crust Pizza ({cost})";
+            Description = $"Thin Crust Pizza";
         }
         public int GetCost()
         {
-            return cost;
+            return Cost;
         }
 
         public string GetDescription()
         {
-            return description;
+            return Description;
         }
 
         public int GetPrepareTime()

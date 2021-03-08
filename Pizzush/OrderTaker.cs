@@ -41,7 +41,7 @@ namespace Pizzush
             kitchen.NewOrder(order);
             // Calculate the cost the present to the user
             int cost = CalculateCost(orderedItems);
-            ui.DrawPayment(cost);
+            ui.DrawPayment(cost,counter-1);
         }
 
         /// <summary>

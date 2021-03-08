@@ -7,16 +7,16 @@ using Pizzush.Interfaces;
 
 namespace Pizzush
 {
+    /// <summary>
+    /// restaurant menu class
+    /// </summary>
     public class Menu
     {
         /// <summary>
         /// List that holds all menu items
         /// </summary>
-        List<IFood> menu = new List<IFood>();
+        List<IFood> MenuList = new List<IFood>();
 
-        /// <summary>
-        /// restaurant menu class
-        /// </summary>
         public Menu()
         {
             IPizza Margarita = new Mozzarella(new TomatoSauce(new RegularCrustPizza()));
@@ -25,21 +25,30 @@ namespace Pizzush
             IPizza Pepperoni = new Pepperoni(new Mozzarella(new TomatoSauce(new RegularCrustPizza())));
             IPizza Fungi = new Mushrooms(new Mozzarella(new CreamAndTruffleSauce(new ThinCrustPizza())));
 
-            menu.Add(Margarita);
-            menu.Add(Margot);
-            menu.Add(Bianca);
-            menu.Add(Pepperoni);
-            menu.Add(Fungi);
+            MenuList.Add(Margarita);
+            MenuList.Add(Margot);
+            MenuList.Add(Bianca);
+            MenuList.Add(Pepperoni);
+            MenuList.Add(Fungi);
         }
 
+        /// <summary>
+        /// Get menu list
+        /// </summary>
+        /// <returns></returns>
         public List<IFood> GetMenu()
         {
-            return menu;
+            return MenuList;
         }
 
+        /// <summary>
+        /// Convert Id To IFood
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IFood ConvertIdToIFood(int id)
         {
-            return menu[id];
+            return MenuList[id];
         }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using static Pizzush.Menu;
-using Pizzush.Interfaces;
 
 namespace Pizzush
 {
@@ -20,7 +17,7 @@ namespace Pizzush
         {
             Console.WriteLine("Welcome to Pizzush!");
             Console.WriteLine("Please type the number of the dish you would like to order");
-            Console.WriteLine("Please press enter after each name");
+            Console.WriteLine("Please press enter after each number");
             Console.WriteLine("When finished, please type end");
 
             //Print menu
@@ -49,7 +46,7 @@ namespace Pizzush
                 int id = int.Parse(userInput);
                 if (id >= menu.GetMenu().Count)
                 {
-                    Console.WriteLine("Please enter an number of item from the mune or 'end'");
+                    Console.WriteLine("Please enter an number of item from the menu or 'end'");
                     continue;
                 }
                 IFood orderedItem = menu.ConvertIdToIFood(id);
@@ -70,9 +67,9 @@ namespace Pizzush
         /// Draw payment info
         /// </summary>
         /// <param name="cost"></param>
-        public void DrawPayment(int cost)
+        public void DrawPayment(int cost, int orderNum)
         {
-            Console.WriteLine("Please pay " + cost + " " + IOrderUI.Currency);
+            Console.WriteLine($"Your order number is:{orderNum}, Please pay {cost} {IOrderUI.Currency}\n");
         }
     }
 }

@@ -23,6 +23,6 @@ namespace Pizzush
         /// Will draw the amount to pay
         /// </summary>
         /// <param name="cost"></param>
-        public void DrawPayment(int cost);
+        public void DrawPayment(int cost, int orderNum);
     }
 }
